@@ -15,8 +15,11 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React Tutorial
         </a>
+        <p>React is a declarative, efficient, and flexible JavaScript library for
+          building user interfaces or UI components. It lets you compose complex UIs
+          from small and isolated pieces of code called “components”.</p>
       </header>
     </div>
   );
