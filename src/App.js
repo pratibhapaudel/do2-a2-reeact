@@ -16,6 +16,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React Tutorial
+
         </a>
         <a
           className="App-link"
@@ -24,6 +25,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+
         </a>
         <p>React is a declarative, efficient, and flexible JavaScript library for
           building user interfaces or UI components. It lets you compose complex UIs
