@@ -1,0 +1,40 @@
+.calculator {
+    width: 300px;
+    margin: 50px auto;
+    border-radius: 10px;
+    background: #eee;
+    padding: 20px;
+  }
+  
+  .calculator input[type="text"] {
+    width: 100%;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: right;
+  }
+  
+  .keypad button {
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    border: none;
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #fff;
+  }
+  
+  .highlight {
+    background: #f1c40f;
+  }
+  
+  #clear,
+  #backspace {
+    background: #d35400;
+    color: #fff;
+  }
+  
+  
