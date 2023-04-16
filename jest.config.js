@@ -7,7 +7,17 @@ module.exports = {
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
   moduleNameMapper: {
-    '\\.(css|less)$': '<rootDir>/__mocks__/styleMock.js',
+    "/\\.css$/": "<rootDir>/__mocks__/styleMock.js",
   },
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  module: {
+    rules: [
+      // ...
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
 };
