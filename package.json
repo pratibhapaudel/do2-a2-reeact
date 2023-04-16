@@ -24,10 +24,8 @@
     ]
   },
   "jest": {
-    "preset": "ts-jest",
-    "setupFilesAfterEnv": [
-      "./src/setupTests.ts"
-    ]
+    "preset": "ts-jest"
+    
   },
   "browserslist": {
     "production": [
