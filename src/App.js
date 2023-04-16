@@ -1,11 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
-import Calculator from './calculator/calculator';
+import Calculator from "./calculator/calculator";
 function App() {
   return (
     <div className="App">
-     <Calculator></Calculator>
-       </div>
+      <Calculator></Calculator>
+    </div>
   );
 }
 

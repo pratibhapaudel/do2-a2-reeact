@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-import "./calculator.css";
+import "../App";
 
 function Calculator() {
   const [result, setResult] = useState("");
 
   function handleClick(e) {
-    setResult(result.concat(e.target.name));
+    setResult(result.concat(name));
+  }
+  function backspace() {
+    setResult(result.slice(0, -1));
   }
 
   function clear() {
     setResult("");
-  }
-
-  function backspace() {
-    setResult(result.slice(0, -1));
   }
 
   function calculate() {
