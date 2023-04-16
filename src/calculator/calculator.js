@@ -5,7 +5,9 @@ function Calculator() {
   const [result, setResult] = useState("");
 
   function handleClick(e) {
-    setResult(result.concat(name));
+    if (e && e.target) {
+      setResult(result.concat(e.target.name));
+    }
   }
   function backspace() {
     setResult(result.slice(0, -1));
