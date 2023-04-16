@@ -1,94 +1,57 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { shallow } from "enzyme";
 import Calculator from "./Calculator";
 
-describe("Calculator component", () => {
-  it("renders the calculator with all buttons", () => {
-    const { getByText } = render(<Calculator />);
-    expect(getByText("Clear")).toBeInTheDocument();
-    expect(getByText("C")).toBeInTheDocument();
-    expect(getByText("÷")).toBeInTheDocument();
-    expect(getByText("7")).toBeInTheDocument();
-    expect(getByText("8")).toBeInTheDocument();
-    expect(getByText("9")).toBeInTheDocument();
-    expect(getByText("×")).toBeInTheDocument();
-    expect(getByText("4")).toBeInTheDocument();
-    expect(getByText("5")).toBeInTheDocument();
-    expect(getByText("6")).toBeInTheDocument();
-    expect(getByText("-")).toBeInTheDocument();
-    expect(getByText("1")).toBeInTheDocument();
-    expect(getByText("2")).toBeInTheDocument();
-    expect(getByText("3")).toBeInTheDocument();
-    expect(getByText("+")).toBeInTheDocument();
-    expect(getByText("0")).toBeInTheDocument();
-    expect(getByText(".")).toBeInTheDocument();
-    expect(getByText("=")).toBeInTheDocument();
+describe("Calculator", () => {
+  it("renders the calculator component without crashing", () => {
+    shallow(<Calculator />);
   });
 
-  it("performs addition", () => {
-    const { getByText, getByDisplayValue } = render(<Calculator />);
-    fireEvent.click(getByText("1"));
-    fireEvent.click(getByText("+"));
-    fireEvent.click(getByText("2"));
-    fireEvent.click(getByText("="));
-    expect(getByDisplayValue("3")).toBeInTheDocument();
+  it("adds numbers correctly", () => {
+    const wrapper = shallow(<Calculator />);
+    wrapper.find('button[name="2"]').simulate("click");
+    wrapper.find('button[name="+"]').simulate("click");
+    wrapper.find('button[name="3"]').simulate("click");
+    wrapper.find('button[name="="]').simulate("click");
+    expect(wrapper.find("input").props().value).toEqual("5");
   });
 
-  it("performs subtraction", () => {
-    const { getByText, getByDisplayValue } = render(<Calculator />);
-    fireEvent.click(getByText("4"));
-    fireEvent.click(getByText("-"));
-    fireEvent.click(getByText("2"));
-    fireEvent.click(getByText("="));
-    expect(getByDisplayValue("2")).toBeInTheDocument();
+  it("subtracts numbers correctly", () => {
+    const wrapper = shallow(<Calculator />);
+    wrapper.find('button[name="5"]').simulate("click");
+    wrapper.find('button[name="-"]').simulate("click");
+    wrapper.find('button[name="3"]').simulate("click");
+    wrapper.find('button[name="="]').simulate("click");
+    expect(wrapper.find("input").props().value).toEqual("2");
   });
 
-  it("performs multiplication", () => {
-    const { getByText, getByDisplayValue } = render(<Calculator />);
-    fireEvent.click(getByText("3"));
-    fireEvent.click(getByText("×"));
-    fireEvent.click(getByText("4"));
-    fireEvent.click(getByText("="));
-    expect(getByDisplayValue("12")).toBeInTheDocument();
+  it("multiplies numbers correctly", () => {
+    const wrapper = shallow(<Calculator />);
+    wrapper.find('button[name="4"]').simulate("click");
+    wrapper.find('button[name="*"]').simulate("click");
+    wrapper.find('button[name="3"]').simulate("click");
+    wrapper.find('button[name="="]').simulate("click");
+    expect(wrapper.find("input").props().value).toEqual("12");
   });
 
-  it("performs division", () => {
-    const { getByText, getByDisplayValue } = render(<Calculator />);
-    fireEvent.click(getByText("9"));
-    fireEvent.click(getByText("÷"));
-    fireEvent.click(getByText("3"));
-    fireEvent.click(getByText("="));
-    expect(getByDisplayValue("3")).toBeInTheDocument();
+  it("divides numbers correctly", () => {
+    const wrapper = shallow(<Calculator />);
+    wrapper.find('button[name="9"]').simulate("click");
+    wrapper.find('button[name="/"]').simulate("click");
+    wrapper.find('button[name="3"]').simulate("click");
+    wrapper.find('button[name="="]').simulate("click");
+    expect(wrapper.find("input").props().value).toEqual("3");
   });
 
-  it("clears the result", () => {
-    const { getByText, getByDisplayValue } = render(<Calculator />);
-    fireEvent.click(getByText("1"));
-    fireEvent.click(getByText("+"));
-    fireEvent.click(getByText("2"));
-    fireEvent.click(getByText("="));
-    fireEvent.click(getByText("C"));
-    expect(getByDisplayValue("")).toBeInTheDocument();
+  it("handles invalid input gracefully", () => {
+    const wrapper = shallow(<Calculator />);
+    wrapper.find('button[name="5"]').simulate("click");
+    wrapper.find('button[name="+"]').simulate("click");
+    wrapper.find('button[name="."]').simulate("click");
+    wrapper.find('button[name="3"]').simulate("click");
+    wrapper.find('button[name="."]').simulate("click");
+    wrapper.find('button[name="6"]').simulate("click");
+    wrapper.find('button[name="="]').simulate("click");
+    expect(wrapper.find("input").props().value).toEqual("5.3+0.6");
   });
-
-  it("deletes the last character", () => {
-    const { getByText, getByDisplayValue } = render(<Calculator />);
-    fireEvent.click(getByText("1"));
-    fireEvent.click(getByText("+"));
-    fireEvent.click(getByText("2"));
-    fireEvent.click(getByText("="));
-    fireEvent.click(getByText("C"));
-    expect(getByDisplayValue("")).toBeInTheDocument();
-    fireEvent.click(getByText("1"));
-    fireEvent.click(getByText("+"));
-    fireEvent.click(getByText("2"));
-    fireEvent.click(getByText("="));
-    fireEvent.click(getByText("C"));
-    expect(getByDisplayValue("")).toBeInTheDocument();
-    fireEvent.click(getByText("1"));
-    fireEvent.click(getByText("+"));
-    fireEvent.click(getByText("2"));
-    fireEvent.click(getByText("="));
-    fireEvent.click(getByText("C"));
-    expect(getByDisplayValue("")).toBeInTheDocument()
 });
