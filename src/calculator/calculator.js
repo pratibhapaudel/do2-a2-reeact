@@ -4,7 +4,7 @@ import "./calculator.css";
 function Calculator() {
   const [result, setResult] = useState("");
 
-  function handleClick(e) {
+  function handleClickButton(e) {
     setResult(result.concat(e.target.name));
   }
 
@@ -37,21 +37,51 @@ function Calculator() {
         <button className="highlight" onClick={backspace} id="backspace">
           C
         </button>
-        <button name="/" onClick={handleClick}>&divide;</button>
-        <button name="7" onClick={handleClick}>7</button>
-        <button name="8" onClick={handleClick}>8</button>
-        <button name="9" onClick={handleClick}>9</button>
-        <button name="*" onClick={handleClick}>&times;</button>
-        <button name="4" onClick={handleClick}>4</button>
-        <button name="5" onClick={handleClick}>5</button>
-        <button name="6" onClick={handleClick}>6</button>
-        <button name="-" onClick={handleClick}>&ndash;</button>
-        <button name="1" onClick={handleClick}>1</button>
-        <button name="2" onClick={handleClick}>2</button>
-        <button name="3" onClick={handleClick}>3</button>
-        <button name="+" onClick={handleClick}>+</button>
-        <button name="0" onClick={handleClick}>0</button>
-        <button name="." onClick={handleClick}>.</button>
+        <button name="/" onClick={handleClickButton}>
+          &divide;
+        </button>
+        <button name="7" onClick={handleClickButton}>
+          7
+        </button>
+        <button name="8" onClick={handleClickButton}>
+          8
+        </button>
+        <button name="9" onClick={handleClickButton}>
+          9
+        </button>
+        <button name="*" onClick={handleClickButton}>
+          &times;
+        </button>
+        <button name="4" onClick={handleClickButton}>
+          4
+        </button>
+        <button name="5" onClick={handleClickButton}>
+          5
+        </button>
+        <button name="6" onClick={handleClickButton}>
+          6
+        </button>
+        <button name="-" onClick={handleClickButton}>
+          &ndash;
+        </button>
+        <button name="1" onClick={handleClickButton}>
+          1
+        </button>
+        <button name="2" onClick={handleClickButton}>
+          2
+        </button>
+        <button name="3" onClick={handleClickButton}>
+          3
+        </button>
+        <button name="+" onClick={handleClickButton}>
+          +
+        </button>
+        <button name="0" onClick={handleClickButton}>
+          0
+        </button>
+        <button name="." onClick={handleClickButton}>
+          .
+        </button>
         <button className="highlight" onClick={calculate} id="result">
           =
         </button>
